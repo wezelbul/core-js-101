@@ -75,7 +75,7 @@ function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 /**
@@ -136,7 +136,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-  return parseInt(value.toString()[value.toString().length - 1]);
+  return parseInt(value.toString()[value.toString().length - 1], 10);
 }
 
 
@@ -155,7 +155,7 @@ function parseNumberFromString(value) {
   if (value.indexOf('.') > 0) {
     return parseFloat(value);
   }
-  return parseInt(value);
+  return parseInt(value, 10);
 }
 
 /**
@@ -194,7 +194,7 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 function roundToPowerOfTen(num, pow) {
-  return Math.round(num / Math.pow(10, pow)) * Math.pow(10, pow);
+  return Math.round(num / 10 ** pow) * (10 ** pow);
 }
 
 /**
@@ -253,7 +253,7 @@ function isPrime(n) {
  */
 function toNumber(value, def) {
   const parsedValue = parseFloat(value);
-  if (!isNaN(parsedValue)) {
+  if (!Number.isNaN(parsedValue)) {
     return parsedValue;
   }
   return def;

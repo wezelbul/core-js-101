@@ -215,7 +215,7 @@ function getRectangleString(width, height) {
   const newLine = '\n';
 
   let result = topLeft + horizontalLine.repeat(width - 2) + topRight + newLine;
-  for (let i = 0; i < height - 2; i++) {
+  for (let i = 0; i < height - 2; i += 1) {
     result += verticalLine + space.repeat(width - 2) + verticalLine + newLine;
   }
   result += bottomLeft + horizontalLine.repeat(width - 2) + bottomRight + newLine;
@@ -248,7 +248,7 @@ function encodeToRot13(str) {
   const power = upperEnd - upperStart + 1;
   const shift = 13;
   let result = '';
-  for (let i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i += 1) {
     const chrCode = str.charCodeAt(i);
     let startCharCode = 0;
     if (chrCode >= upperStart && chrCode <= upperEnd) {
@@ -257,6 +257,7 @@ function encodeToRot13(str) {
       startCharCode = lowerStart;
     } else {
       result += str[i];
+      // eslint-disable-next-line no-continue
       continue;
     }
     const addendum = (chrCode - startCharCode + shift) % power;
@@ -326,7 +327,7 @@ function getCardId(value) {
     case '8':
     case '9':
     case '10':
-      nominalFactor = parseInt(nominal) - 1;
+      nominalFactor = parseInt(nominal, 10) - 1;
       break;
     case 'J':
       nominalFactor = 10;
