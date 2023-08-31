@@ -521,14 +521,6 @@ function evaluateTicTacToePosition(position) {
   }
   return undefined;
 }
-const X = 'X';
-const O = '0';
-console.log(evaluateTicTacToePosition([
-  [X, X],
-  [O, O, O],
-  [X, undefined, X],
-]));
-
 
 module.exports = {
   getFizzBuzz,
